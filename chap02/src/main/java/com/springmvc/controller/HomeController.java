@@ -23,4 +23,11 @@ public class HomeController {
 		
 		return "home"; // 뷰 ↑
 	}
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public String test(Model model) {
+		String test = "안녕하세요!";
+		model.addAttribute("tt",test);
+		return "test";
+	}
+	
 }
