@@ -13,7 +13,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- 핸들러매핑과 핸들러어댑터를 자동으로 객체생성함 -->
-	<annotation-driven />
+	<annotation-driven enable-matrix-variables="true"/>
 
 	<!-- css, image, js와 같은 공유되는 파일의 위치를 정하고 MVC외 처리를 실시함 -->
 	<resources mapping="/resources/**" location="/resources/" />

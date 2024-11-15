@@ -1,9 +1,13 @@
 package com.springmvc.repository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.springmvc.domain.Book;
 
@@ -42,11 +46,85 @@ public class BookRepositoryImpl implements BookRepository{
 	   }
 	
 	@Override
+	public List<Book> getBookListByCategory(String category) {
+		List<Book> booksByCategory = new ArrayList<Book>();
+		for(int i=0; i<listOfBooks.size(); i++) {
+			Book book = listOfBooks.get(i);
+			if(category.equalsIgnoreCase(book.getCategory()))
+				booksByCategory.add(book);
+		}
+		return booksByCategory;
+	}
+
+	@Override
 	public List<Book> getAllBookList() {
-		System.out.println("BookRepositoryImpl의 getAllBookList()실행");
+	/**/System.out.println("BookRepositoryImpl의 getAllBookList()실행");
+		
 		return listOfBooks;
 	}
 	
+	public Set<Book> getBookListByFilter(Map<String, List<String>> filter){
+		System.out.println("bookRepository에 getBookListByFilter() 실행");
+		Set<Book> booksByPublisher = new HashSet<Book>();
+		Set<Book> booksByCategory = new HashSet<Book>();
+		
+		Set<String> booksByFilter = filter.keySet();
+		
+		if(booksByFilter.contains("publisher")) 
+		{
+			/**/System.out.println("booksByFilter.contains('publisher'): TRUE!");
+			for(int j=0; j<filter.get("publisher").size(); j++)
+			{
+				String publisherName = filter.get("publisher").get(j);
+			/**/System.out.println(filter.get("publisher").get(j));
+				for(int i=0; i<listOfBooks.size(); i++) 
+				{
+					Book book = listOfBooks.get(i);
+				/**/System.out.println(listOfBooks.get(i));
+					
+					if(publisherName.equalsIgnoreCase(book.getPublisher()))
+				        System.out.println("publisherName.equalsIgnoreCase(book.getPublisher()):TRUE!");
+						booksByPublisher.add(book);
+				}
+			}
+			
+		}
+		if(booksByFilter.contains("category")) {
+			System.out.println("booksByFilter.contains('category'):TRUE!");
+			for(int i=0; i<filter.get("category").size(); i++) {
+				String category = filter.get("category").get(i);
+				System.out.println(filter.get("category").get(i));
+				List<Book> list = getBookListByCategory(category);
+				booksByCategory.addAll(list);
+			}
+		}
+		
+		booksByCategory.retainAll(booksByPublisher);
+		return booksByCategory;
+	}
 	
-
+	public Book getBookById(String bookId)
+	{
+		System.out.println("Repository의 getBookById() 실행");
+		Book bookInfo = null;
+		for(int i=0; i<listOfBooks.size();i++)
+		{
+			Book book = listOfBooks.get(i);
+			System.out.println("book"+i+":"+ book);
+			if(book != null && book.getBookId() != null && book.getBookId().equals(bookId))
+			{	
+				System.out.println(book != null && book.getBookId() != null && book.getBookId().equals(bookId));
+				bookInfo = book;
+				break;
+			}
+			else {
+				System.out.println("fail");
+			}
+		}
+		if(bookInfo==null)
+			throw new IllegalArgumentException("도서 ID가 " + bookId + "인 해당 도서를 찾을 수 없습니다");
+		
+		return bookInfo;
+	}
+	
 }

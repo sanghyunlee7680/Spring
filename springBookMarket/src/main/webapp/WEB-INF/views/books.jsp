@@ -7,7 +7,7 @@
 %>
 <html>
 <head>
-<link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet"/>
 <meta charset="UTF-8">
 <title>도서 목록</title>
 </head>
@@ -36,6 +36,8 @@
 						<br>${book.publisher} | ${book.releaseDate}
 					<p align=left>${fn:substring(book.description, 0, 100)}...
 					<p>${book.unitPrice}원
+					<p><a href="<c:url value="/books/book?id=${book.bookId}"/>"
+					   class="btn btn-Secondary" role="button">상세정보 &raquo;</a>
 				</div>
 			</c:forEach>
 		</div>
