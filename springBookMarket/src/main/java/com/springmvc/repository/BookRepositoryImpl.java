@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
 import com.springmvc.domain.Book;
+import com.springmvc.exception.BookIdException;
 
 @Repository
 public class BookRepositoryImpl implements BookRepository{
@@ -25,6 +26,7 @@ public class BookRepositoryImpl implements BookRepository{
 	       book1.setCategory("IT전문서");
 	       book1.setUnitsInStock(1000);
 	       book1.setReleaseDate("2020/05/29");
+	      
 	       Book book2 = new Book("ISBN1235", "Node.js 교과서", 36000);
 	       book2.setAuthor("조현영");
 	       book2.setDescription("이 책은 프런트부터 서버, 데이터베이스, 배포까지 아우르는 광범위한 내용을 다룬다. 군더더기 없는 직관적인 설명으로 기본 개념을 확실히 이해하고, 노드의 기능과 생태계를 사용해 보면서 실제로 동작하는 서버를 만들어보자. 예제와 코드는 최신 문법을 사용했고 실무에 참고하거나 당장 적용할 수 있다.");
@@ -118,13 +120,17 @@ public class BookRepositoryImpl implements BookRepository{
 				break;
 			}
 			else {
-				System.out.println("fail");
+				System.out.println("repository의 getBookById fail");
 			}
 		}
 		if(bookInfo==null)
-			throw new IllegalArgumentException("도서 ID가 " + bookId + "인 해당 도서를 찾을 수 없습니다");
+			throw new BookIdException(bookId);
 		
 		return bookInfo;
+	}
+	
+	public void setNewBook(Book book) {
+		listOfBooks.add(book);
 	}
 	
 }

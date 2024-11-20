@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.springmvc.domain.Book" %>
 <%
 	System.out.println("book.jsp 출력");
+	Book book = new Book();
 %>
 <!DOCTYPE html>
 <html>
@@ -27,9 +29,16 @@
 		</div>
 	</div>
 	
-	<div calss="container">
+	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-4">
+			<%if(book.getBookImage()==null){ %>
+				<img src="/chapter2/resources/images/${book.getBookId()}.png" style="width:100%"/>
+			<%}else{ %>
+				<img src="/chapter2/resources/images/${book.getBookImage().getOriginalFilename()}" style="width:100%"/>
+			<% } %>
+			</div>
+			<div class="col-md-8">
 				<h3>${book.name}</h3>
 				<p>${book.description}</p>
 				<br>
