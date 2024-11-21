@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
 import com.springmvc.domain.Book;
-import com.springmvc.exception.BookIdException;
+//import com.springmvc.exception.BookIdException;
 
 @Repository
 public class BookRepositoryImpl implements BookRepository{
@@ -123,9 +123,9 @@ public class BookRepositoryImpl implements BookRepository{
 				System.out.println("repository의 getBookById fail");
 			}
 		}
-		if(bookInfo==null)
-			throw new BookIdException(bookId);
-		
+//		if(bookInfo==null)
+//			throw new BookIdException(bookId);
+//		
 		return bookInfo;
 	}
 	

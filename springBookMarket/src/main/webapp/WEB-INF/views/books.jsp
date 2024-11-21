@@ -10,7 +10,7 @@
 %>
 <html>
 <head>
-<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet"/>
 <meta charset="UTF-8">
 <title>도서 목록</title>
 </head>

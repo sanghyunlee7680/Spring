@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>예외 처리</title>
 </head>

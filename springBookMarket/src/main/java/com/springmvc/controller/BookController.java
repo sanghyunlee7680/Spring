@@ -7,10 +7,12 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,17 +29,27 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.domain.Book;
-import com.springmvc.exception.BookIdException;
+//import com.springmvc.exception.BookIdException;
 import com.springmvc.exception.CategoryException;
 import com.springmvc.service.BookService;
+import com.springmvc.validator.BookValidator;
+import com.springmvc.validator.UnitsInStockValidator;
 
 
 @Controller
 @RequestMapping("/books")
 public class BookController {
+	// BookService 클래스도 component-scan 되어야 한다. 
 	@Autowired
 	private BookService bookService;
-	// BookService 클래스도 component-scan 되어야 한다. 
+	
+	// BookValidator 인스턴스 선언
+	@Autowired
+	private BookValidator bookValidator; 
+	
+	//UnitsInStockValidator의 인스턴스 선언
+//	@Autowired
+//	private UnitsInStockValidator unitsInStockValidator;
 	
 	@GetMapping
 	public String requestBookList(Model model) {
@@ -91,7 +103,13 @@ public class BookController {
 	}
 	
 	@PostMapping("/add")
-	public String submitAddNewBook(@ModelAttribute("NewBook") Book book,MultipartHttpServletRequest request) {
+	public String submitAddNewBook(@Valid @ModelAttribute("NewBook") Book book, BindingResult result,MultipartHttpServletRequest request) {
+		
+		if(result.hasErrors()) {
+			return "addBook";
+		}
+		// String[] suppressedFields = result.getSuppressedFields();
+		
 		MultipartFile bookImage = book.getBookImage();
 		
 		String saveName = bookImage.getOriginalFilename();
@@ -116,17 +134,21 @@ public class BookController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		// 생성한 bookValidator설정
+		binder.setValidator(bookValidator);
+		// 생성한 unitsInStockValidator설정
+		// binder.setValidator(unitsInStockValidator);
 		binder.setAllowedFields("bookId", "name", "unitPrice", "author", "description", "publisher", "category", "unitsInStock", "totalPages", "releaseDate", "condition", "bookImage");
 	}
 	
-	@ExceptionHandler(value={BookIdException.class})
-	public ModelAndView handlerError(HttpServletRequest req, BookIdException exception) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("invalidBookId", exception.getBookId());
-		mav.addObject("exception", exception);
-		mav.addObject("url", req.getRequestURL()+ "?" + req.getQueryString());
-		mav.setViewName("errorBook");
-		return mav;
-	}
+//	@ExceptionHandler(value={BookIdException.class})
+//	public ModelAndView handlerError(HttpServletRequest req, BookIdException exception) {
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("invalidBookId", exception.getBookId());
+//		mav.addObject("exception", exception);
+//		mav.addObject("url", req.getRequestURL()+ "?" + req.getQueryString());
+//		mav.setViewName("errorBook");
+//		return mav;
+//	}
 	
 }

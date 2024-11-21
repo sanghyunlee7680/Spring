@@ -34,9 +34,15 @@
 				<input type="submit" class="btn btn-sm btn-success" value="Logout"/>
 			</form:form>
 		</div>
+		
+		<div class="float-right" style="padding-right:30px">
+			<a href="?language=ko">Korean</a>|<a href="?language=en">English</a>
+		</div>
+		
+		
 		<br><br>
 	<!-- JSP와 다른 form태그 사용법, form태그 내에서는 form:(form, input 등)으로 표현해야한다.  -->
-	<form:form modelAttribute="NewBook" action=".add?${_csrf.parameterName}=${_csrf.token}" class="form-horizontal" enctype="multipart/form-data">
+	<form:form modelAttribute="NewBook" class="form-horizontal" enctype="multipart/form-data">
 		<fieldset>
 		<legend><spring:message code="addBook.form.subtitle.label"/></legend>
 			<div class="form-group row">
@@ -50,6 +56,9 @@
 					 -->
 					<form:input path="bookId" class="form-control"/>
 				</div>
+				<div>
+					<form:errors path="bookId" cssClass="text-danger"/>
+				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">
@@ -58,6 +67,9 @@
 				<div class="col-sm-3">
 					<form:input path="name" class="form-control"/>
 				</div>
+				<div>
+					<form:errors path="name" cssClass="text-danger"/>
+				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">
@@ -65,6 +77,9 @@
 				</label>
 				<div class="col-sm-3">
 					<form:input path="unitPrice" class="form-control"/>
+				</div>
+				<div>
+					<form:errors path="unitPrice" cssClass="text-danger"/>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -105,6 +120,9 @@
 				</label>
 				<div class="col-sm-3">
 					<form:input path="unitsInStock" class="form-control"/>
+				</div>
+				<div class="col-sm-6">
+					<form:errors path="unitsInStock" cssClass="text-danger"/>
 				</div>
 			</div>
 			<div class="form-group row">
