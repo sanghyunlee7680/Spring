@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="com.springmvc.domain.Book" %>
 <%
 	System.out.println("book.jsp 출력");
@@ -8,7 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
+<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet">
+<script src="/chapter2/resources/js/controllers.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -16,10 +18,16 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./home">Home</a>
+				<a class="navbar-brand" href="/chapter2/home">Home</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./books">Books</a>
+				<a class="navbar-brand" href="/chapter2/books">Books</a>
+			</div>
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/chapter2/books/add">AddBook</a>
+			</div>
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/chapter2/cart">Cart</a>
 			</div>
 		</div>
 	</nav>
@@ -50,8 +58,11 @@
 				<p><b>재고수</b> : ${book.unitsInStock}
 				<h4>${book.unitPrice}원</h4>
 				<br>
-				<p><a href="#" class="btn btn-primary">도서주문 &raquo;</a>
-				<a href="<c:url value="/books"/>" class="btn btn-secondary">도서 목록 &raquo;</a>
+				<form:form name="addForm" method="put">
+					<p><a href="javascript:addToCart('../cart/add/${book.bookId}')" class="btn btn-primary">도서주문 &raquo;</a>
+					<a href="/chapter2/cart" class="btn btn-warning">장바구니 &raquo;</a>
+					<a href="<c:url value="/books"/>" class="btn btn-secondary">도서 목록 &raquo;</a>
+				</form:form>
 			</div>
 		</div>
 		<hr>

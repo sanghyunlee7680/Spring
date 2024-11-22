@@ -10,7 +10,7 @@
 %>
 <html>
 <head>
-<link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet"/>
 <meta charset="UTF-8">
 <title>도서 목록</title>
 </head>
@@ -18,10 +18,16 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./home">Home</a>
+				<a class="navbar-brand" href="/chapter2/home">Home</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./books">Books</a>
+				<a class="navbar-brand" href="/chapter2/books">Books</a>
+			</div>
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/chapter2/books/add">AddBook</a>
+			</div>
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/chapter2/cart">Cart</a>
 			</div>
 		</div>
 	</nav>
