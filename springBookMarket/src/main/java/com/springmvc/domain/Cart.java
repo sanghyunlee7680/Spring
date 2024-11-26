@@ -1,9 +1,12 @@
 package com.springmvc.domain;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cart {
+@SuppressWarnings("serial")
+public class Cart implements Serializable{
+	
 	private String cartId;						//장바구니 ID
 	private Map<String, CartItem> cartItems;	//장바구니 항목
 	private int grandTotal;

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
 <link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet">
+<head>
 <meta charset="UTF-8">
-<title>예외 처리</title>
+<title>Thanks you</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -23,21 +24,18 @@
 			</div>
 		</div>
 	</nav>
+	
 	<div class="jumbotron">
 		<div class="container">
-			<h2 class="alert alert-danger">
-				해당 도서가 존재하지 않습니다.<br>
-				도서 ID : ${invalidBookId}
-			</h2>
+			<h1 class="display-3">주문취소</h1>
 		</div>
 	</div>
 	<div class="container">
-		<p>${url}</p>
-		<p>${exception}</p>
+		<h2 class="alert alert-danger">주문을 취소하였습니다.</h2>
 	</div>
 	<div class="container">
 		<p>
-			<a href="/books" class="btn btn-secondary">도서목록 &raquo;</a>
+			<a href="/springBookMarket/books" class="btn btn-primary">&laquo; 도서목록</a>
 		</p>
 	</div>
 </body>

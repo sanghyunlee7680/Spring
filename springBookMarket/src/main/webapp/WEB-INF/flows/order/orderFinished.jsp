@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
-<head>
 <link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet">
+<head>
 <meta charset="UTF-8">
-<title>예외 처리</title>
+<title>Thank you</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -23,21 +25,24 @@
 			</div>
 		</div>
 	</nav>
+	
 	<div class="jumbotron">
 		<div class="container">
-			<h2 class="alert alert-danger">
-				해당 도서가 존재하지 않습니다.<br>
-				도서 ID : ${invalidBookId}
-			</h2>
+			<h1 class="display-3">주문완료</h1>
 		</div>
 	</div>
+	
 	<div class="container">
-		<p>${url}</p>
-		<p>${exception}</p>
+		<h2 class="alert alert-danger">주문해 주셔서 감사합니다.</h2>
+		<p> 주문은
+			<fmt:formatDate type="date" value="${order.shipping.date}" />
+			에 배송될 예정입니다!
+		</p>
+		<p> 주문번호 : ${order.orderId} </p>
 	</div>
 	<div class="container">
 		<p>
-			<a href="/books" class="btn btn-secondary">도서목록 &raquo;</a>
+			<a href="/springBookMarket/books" class="btn btn-primary">&laquo; 도서목록</a>
 		</p>
 	</div>
 </body>

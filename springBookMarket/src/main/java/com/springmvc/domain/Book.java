@@ -1,12 +1,17 @@
 package com.springmvc.domain;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.*;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springmvc.validator.BookId;
 
-public class Book {
+@SuppressWarnings("serial")
+public class Book implements Serializable {
+	
+	
 	@BookId
 	@Pattern(regexp="ISBN[1-9]+", message="{Pattern.NewBook.bookId}")
 	private String bookId;		//도서ID

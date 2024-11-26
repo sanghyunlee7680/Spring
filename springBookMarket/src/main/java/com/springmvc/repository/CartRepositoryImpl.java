@@ -26,7 +26,9 @@ public class CartRepositoryImpl implements CartRepository {
 	}
 	
 	public Cart read(String CartId) {
+		System.out.println("리스트오브카트의 겟카트아이디 : " + listOfCarts.get(CartId));
 		return listOfCarts.get(CartId);
+		
 	}
 	
 	public void update(String cartId, Cart cart) {

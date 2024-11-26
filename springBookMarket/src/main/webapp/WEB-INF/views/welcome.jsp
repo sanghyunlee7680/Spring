@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-<script src="/chapter2/resources/js/map.js"></script>
+<link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet">
+<script src="/springBookMarket/resources/js/map.js"></script>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,16 +12,16 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/home">Home</a>
+				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books">Books</a>
+				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books/add">AddBook</a>
+				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/cart">Cart</a>
+				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
 			</div>
 		</div>
 	</nav>

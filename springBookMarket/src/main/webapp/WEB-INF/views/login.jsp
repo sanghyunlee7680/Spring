@@ -3,23 +3,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet">
 <title>로그인</title>
 </head>
 <body>
 	<<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/home">Home</a>
+				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books">Books</a>
+				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books/add">AddBook</a>
+				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/cart">Cart</a>
+				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
 			</div>
 		</div>
 	</nav>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
-<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet"/>
 <script src="/chapter2/resources/js/controllers.js"></script>
 <head>
 <meta charset="UTF-8">
@@ -14,16 +14,16 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/home">Home</a>
+				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books">Books</a>
+				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books/add">AddBook</a>
+				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/cart">Cart</a>
+				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
 			</div>
 		</div>
 	</nav>
@@ -37,7 +37,7 @@
 			<form:form name="clearForm" method="delete">
 				<a href="javascript:clearCart()" class="btn btn-danger pull-left">삭제하기</a>
 			</form:form>
-			<a href="#" class="btn btn-success float-right">주문하기</a>
+			<a href="/springBookMarket/order?cartId=${cartId}" class="btn btn-success float-right">주문하기</a>
 		</div>
 		<div style="padding-top:50px">
 			<table class="table table-hover">

@@ -18,16 +18,16 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/home">Home</a>
+				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books">Books</a>
+				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/books/add">AddBook</a>
+				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
 			</div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/chapter2/cart">Cart</a>
+				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
 			</div>
 		</div>
 	</nav>
@@ -41,9 +41,9 @@
 		<div class="row">
 			<div class="col-md-4">
 			<%if(book.getBookImage()==null){ %>
-				<img src="/chapter2/resources/images/${book.getBookId()}.png" style="width:100%"/>
+				<img src="/springBookMarket/resources/images/${book.getBookId()}.png" style="width:100%"/>
 			<%}else{ %>
-				<img src="/chapter2/resources/images/${book.getBookImage().getOriginalFilename()}" style="width:100%"/>
+				<img src="/springBookMarket/resources/images/${book.getBookImage().getOriginalFilename()}" style="width:100%"/>
 			<% } %>
 			</div>
 			<div class="col-md-8">
@@ -60,7 +60,7 @@
 				<br>
 				<form:form name="addForm" method="put">
 					<p><a href="javascript:addToCart('../cart/add/${book.bookId}')" class="btn btn-primary">도서주문 &raquo;</a>
-					<a href="/chapter2/cart" class="btn btn-warning">장바구니 &raquo;</a>
+					<a href="/springBookMarket/cart" class="btn btn-warning">장바구니 &raquo;</a>
 					<a href="<c:url value="/books"/>" class="btn btn-secondary">도서 목록 &raquo;</a>
 				</form:form>
 			</div>
