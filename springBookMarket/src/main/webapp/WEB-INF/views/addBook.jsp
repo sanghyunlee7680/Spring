@@ -11,36 +11,7 @@
 <title>도서 등록</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
-			</div>
-		</div>
-	</nav>
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">
-				<spring:message code="addBook.form.title.label"/>
-			</h1>
-		</div>
-	</div>
-	<div class="container">
-		<div class="float-right">
-			<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-				<input type="submit" class="btn btn-sm btn-success" value="Logout"/>
-			</form:form>
-		</div>
-		
+	<div class="container">		
 		<div class="float-right" style="padding-right:30px">
 			<a href="?language=ko">Korean</a>|<a href="?language=en">English</a>
 		</div>
@@ -165,10 +136,6 @@
 			</div>
 		</fieldset>
 	</form:form>
-	<hr>
-	<footer>
-		<p>&copy; BookMarket</p>
-	</footer>
 </div>
 </body>
 </html>

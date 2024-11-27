@@ -5,33 +5,12 @@
 <!DOCTYPE html>
 <html>
 <link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet"/>
-<script src="/chapter2/resources/js/controllers.js"></script>
+<script src="/springBookMarket/resources/js/controllers.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Cart</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
-			</div>
-		</div>
-	</nav>
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">장바구니</h1>
-		</div>
-	</div>
 	<div class="container">
 		<div>
 			<form:form name="clearForm" method="delete">
@@ -69,10 +48,6 @@
 			</table>
 			<a href="../books" class="btn btn-secondary">&laquo; 쇼핑 계속하기</a>
 		</div>
-		<hr>
-		<footer>
-			<p>&copy; BookMarket</p>
-		</footer>
 	</div>
 </body>
 </html>

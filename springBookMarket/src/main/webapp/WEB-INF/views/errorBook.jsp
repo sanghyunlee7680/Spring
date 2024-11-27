@@ -7,22 +7,6 @@
 <title>예외 처리</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
-			</div>
-		</div>
-	</nav>
 	<div class="jumbotron">
 		<div class="container">
 			<h2 class="alert alert-danger">

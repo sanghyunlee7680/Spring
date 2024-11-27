@@ -29,7 +29,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.domain.Book;
-//import com.springmvc.exception.BookIdException;
+import com.springmvc.exception.BookIdException;
 import com.springmvc.exception.CategoryException;
 import com.springmvc.service.BookService;
 import com.springmvc.validator.BookValidator;
@@ -114,11 +114,13 @@ public class BookController {
 		
 		String saveName = bookImage.getOriginalFilename();
 		String images = request.getServletContext().getRealPath("resources/images");
+		System.out.println("이미지 : " + images);
 		File f = new File(images, saveName);
 		
 		if(bookImage != null && !bookImage.isEmpty()) {
 			try {
 				bookImage.transferTo(f);
+				book.setFileName(saveName);
 			} catch (Exception e) {
 				throw new RuntimeException("도서 이미지 업로드가 실패했습니다", e);
 			}
@@ -141,14 +143,43 @@ public class BookController {
 		binder.setAllowedFields("bookId", "name", "unitPrice", "author", "description", "publisher", "category", "unitsInStock", "totalPages", "releaseDate", "condition", "bookImage");
 	}
 	
-//	@ExceptionHandler(value={BookIdException.class})
-//	public ModelAndView handlerError(HttpServletRequest req, BookIdException exception) {
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("invalidBookId", exception.getBookId());
-//		mav.addObject("exception", exception);
-//		mav.addObject("url", req.getRequestURL()+ "?" + req.getQueryString());
-//		mav.setViewName("errorBook");
-//		return mav;
-//	}
+	@ExceptionHandler(value={BookIdException.class})
+	public ModelAndView handlerError(HttpServletRequest req, BookIdException exception) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("invalidBookId", exception.getBookId());
+		mav.addObject("exception", exception);
+		mav.addObject("url", req.getRequestURL()+ "?" + req.getQueryString());
+		mav.setViewName("errorBook");
+		return mav;
+	}
 	
+	@GetMapping("/update")
+	public String getUpdateBookForm(@ModelAttribute("updateBook") Book book, @RequestParam("id") String bookId, Model model) {
+		Book bookById = bookService.getBookById(bookId);
+		model.addAttribute("book", bookById);
+		return "updateForm";
+	}
+	
+	@PostMapping("/update")
+	public String submitUpdateBookForm(@ModelAttribute("updateBook") Book book, HttpServletRequest request) {
+		MultipartFile bookImage = book.getBookImage();
+		System.out.println("컨디션" + book.getCondition());
+		String rootDirectory = request.getServletContext().getRealPath("resources/images");
+		System.out.println("rootDirectory : " + rootDirectory);	
+		if(bookImage != null && !bookImage.isEmpty()) {
+			try {
+				String fname = bookImage.getOriginalFilename();
+				bookImage.transferTo(new File(rootDirectory, fname));
+				book.setFileName(fname);
+			} catch (Exception e) { throw new RuntimeException("Book Image saving failed", e); }
+		}
+		bookService.setUpdateBook(book);
+		return "redirect:/books";
+	}
+	
+	@RequestMapping(value="/delete")
+	public String getDeleteBookForm(Model model, @RequestParam("id") String bookId) {
+		bookService.setDeleteBook(bookId);
+		return "redirect:/books";
+	}
 }

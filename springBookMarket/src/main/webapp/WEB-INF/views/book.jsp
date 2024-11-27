@@ -9,41 +9,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="/chapter2/resources/css/bootstrap.min.css" rel="stylesheet">
-<script src="/chapter2/resources/js/controllers.js"></script>
+<link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet">
+<script src="/springBookMarket/resources/js/controllers.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
-			</div>
-		</div>
-	</nav>
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">도서 정보</h1>
-		</div>
-	</div>
-	
+<body>	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
 			<%if(book.getBookImage()==null){ %>
-				<img src="/springBookMarket/resources/images/${book.getBookId()}.png" style="width:100%"/>
+				<img src="/springBookMarket/resources/images/${book.fileName}" style="width:100%"/>
 			<%}else{ %>
-				<img src="/springBookMarket/resources/images/${book.getBookImage().getOriginalFilename()}" style="width:100%"/>
+				<img src="/springBookMarket/resources/images/${book.fileName}" style="width:100%"/>
 			<% } %>
 			</div>
 			<div class="col-md-8">
@@ -62,13 +40,14 @@
 					<p><a href="javascript:addToCart('../cart/add/${book.bookId}')" class="btn btn-primary">도서주문 &raquo;</a>
 					<a href="/springBookMarket/cart" class="btn btn-warning">장바구니 &raquo;</a>
 					<a href="<c:url value="/books"/>" class="btn btn-secondary">도서 목록 &raquo;</a>
+					<sec:authorize access="isAuthenticate()">
+						<a href="/springBookMarket/books/update?id=${book.bookId}" class="btn btn-success">수정&raquo;</a>
+						<a href="/springBookMarket/books/delete?id=${book.bookId}" class="btn btn-danger">삭제&raquo;</a>
+					</sec:authorize>
 				</form:form>
 			</div>
 		</div>
-		<hr>
-		<footer>
-			<p>&copy; BookMarket</p>
-		</footer>
 	</div>
+<script src="/springBookMarket/resources/js/controllers.js"></script>
 </body>
 </html>

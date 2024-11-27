@@ -63,11 +63,15 @@
 		</beans:property>
 	</beans:bean>
 	
-	<webflow:flow-registry id="flowRegistry">
+	<!-- Webflow -->
+	<webflow:flow-registry id="flowRegistry"
+			flow-builder-services="flowBuilderServices">
 		<webflow:flow-location path="/WEB-INF/flows/order/order-flow.xml" id="order"></webflow:flow-location>
 	</webflow:flow-registry>
 	
 	<webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry"></webflow:flow-executor>
+	
+	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="viewFactoryCreator"/>
 	
 	<beans:bean id="flowHandlerMapping" class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 		<beans:property name="flowRegistry" ref="flowRegistry"></beans:property>
@@ -77,4 +81,30 @@
 		<beans:property name="flowExecutor" ref="flowExecutor">	</beans:property>
 	</beans:bean>
 	
+	
+	<!-- tiles -->
+	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+	
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions" value="/WEB-INF/tiles/tiles.xml"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="viewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<beans:property name="viewResolvers" ref="tilesViewResolver"/>
+	</beans:bean>
+	
+	<!-- mySQL -->
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	 	<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	 	<beans:property name="url" value="jdbc:mysql://localhost:3306/springmvcDB?serverTimezone=UTC"/>
+	 	<beans:property name="username" value="root"/>
+	 	<beans:property name="password" value="1234"/>
+	</beans:bean>
+	
+	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
 </beans:beans>

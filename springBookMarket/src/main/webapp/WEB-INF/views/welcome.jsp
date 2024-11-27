@@ -2,34 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link href="/springBookMarket/resources/css/bootstrap.min.css" rel="stylesheet">
-<script src="/springBookMarket/resources/js/map.js"></script>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/home">Home</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books">Books</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/books/add">AddBook</a>
-			</div>
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/springBookMarket/cart">Cart</a>
-			</div>
-		</div>
-	</nav>
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">${greeting}</h1>
-		</div>
-	</div>
 	<div class="container">
 		<div class="text-center">
 			<h3>${strapline}</h3>
@@ -42,12 +20,9 @@
 		   <button onclick="zoomOut()">+</button>
 		    <span id="maplevel"></span>
 		</p>
-	<footer class="container">
-		<hr>
-		<p>&copy; WebMarket</p>
-	</footer>
-	<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6a14fe95598e35dd37cc0ae4d699b9d2"></script>
+	<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+	<script src="/springBookMarket/resources/js/map.js"></script>
 </body>
 </html>
